@@ -1,0 +1,35 @@
+<nav class="navbar navbar-expand-lg fixed-top navbar-light">
+    <a class="navbar-brand" routerLink="/login" style="margin-left: 10px;"><i class="fa fa-home" aria-hidden="true"
+            style="font-size: x-large;"></i></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item" routerLinkActive="active">
+                <a class="nav-link" routerLink="/login">Login</a>
+            </li>
+            <li class="nav-item" routerLinkActive="active">
+                <a class="nav-link" routerLink="/register">Register</a>
+            </li>
+
+        </ul>
+
+        <form class="form-inline my-2 my-lg-0">
+
+            <div *ngIf="showUser; then thenBlock else elseBlock"></div>
+            <ng-template #thenBlock>
+                <button class="btn btn-outline-success my-2 my-sm-0" type="button"
+                    style=" background: white; color: black; border-radius: 0px; border: 1px solid; width: 100%;"
+                    (click)="Logout()">
+                    {{ USER_DETAILS.name }} <i class="fa fa-sign-in" aria-hidden="true"></i></button>
+            </ng-template>
+            <ng-template #elseBlock>
+                <a routerLink="/login" class="btn btn-outline-success my-2 my-sm-0" type="button"
+                    style=" background: white; color: black; border-radius: 0px; border: 1px solid; width: 100%;">
+                    Please Login </a>
+            </ng-template>
+        </form>
+    </div>
+</nav>

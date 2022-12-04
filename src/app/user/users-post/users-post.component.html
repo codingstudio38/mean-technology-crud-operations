@@ -1,0 +1,50 @@
+<div class="container">
+    <section class="mt-5 mb-5">
+        <div class="col md-12">
+            <h2 style="text-align: center; text-decoration: underline;"> Users Post</h2>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th colspan="3" align="left">
+                            <select (change)="setLimit(limit_.value)" #limit_>
+                                <option value="5">Limit</option>
+                                <option value="{{ item }}" *ngFor="let item of limit_list;">{{ item }}</option>
+                            </select>
+                        </th>
+                        <th colspan="3" align="right">
+                            <p style="text-align:right;">Total: {{ totalRecords }} of {{ checkNo }}</p>
+                        </th>
+                    </tr>
+                    <tr class="table-primary">
+                        <th scope="col">#</th>
+                        <th scope="col">Userid</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Type</th>
+                        <th scope="col">Content</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr
+                        *ngFor="let item of records| paginate: { itemsPerPage: limit, currentPage: page, totalItems: totalRecords }; let i=index;">
+                        <th scope="row">{{ item.slno }}</th>
+                        <td>{{item.user_name}} </td>
+                        <td>{{item.title}} </td>
+                        <td>{{item.type}} </td>
+                        <td>{{item.content}} </td>
+                        <td>
+                            <button class="btn btn-danger btn-sm ml-2" (click)="DeleteUser(item._id)">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="6" align="right">
+                            <pagination-controls (pageChange)="pageChangeEvent($event)"></pagination-controls>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </section>
+</div>

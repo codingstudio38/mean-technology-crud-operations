@@ -1,0 +1,26 @@
+<nav class="navbar navbar-expand-lg fixed-top navbar-light">
+    <a class="navbar-brand" routerLink="/user/home" style="margin-left: 10px;"><i class="fa fa-home" aria-hidden="true"
+            style="font-size: x-large;"></i></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item" routerLinkActive="active">
+                <a class="nav-link" routerLink="/user/home">Home</a>
+            </li>
+            <li class="nav-item" routerLinkActive="active">
+                <a class="nav-link" routerLink="/user/users-post">Users Post</a>
+            </li>
+
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="button"
+                style=" background: white; color: black; border-radius: 0px; border: 1px solid; width: 100%;"
+                (click)="Logout()">{{
+                USER_DETAILS.name
+                }} <i class="fa fa-sign-in" aria-hidden="true"></i></button>
+        </form>
+    </div>
+</nav>

@@ -1,0 +1,110 @@
+<app-header-component></app-header-component>
+<section style="margin-top: 70px;">
+    <div class="container h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-lg-12 col-xl-11">
+                <div class="card text-black">
+                    <div class="card-body p-md-5">
+                        <div class="row justify-content-center">
+                            <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+                                <p class="text-center h2 fw-bold mb-3 mx-1 mx-md-4 mt-2" style="
+                                    text-transform: uppercase;">MEAN Technology</p>
+                                <p class="text-center h3 fw-bold mb-3 mx-1 mx-md-4 mt-2">Sign Up</p>
+
+                                <form class="mx-1 mx-md-4" id="myform" [formGroup]="registerForm"
+                                    (ngSubmit)="Register()">
+                                    <div [ngSwitch]="apistatusCode">
+                                        <div *ngSwitchCase="'200'">
+                                            <div class="alert alert-success" *ngIf="registerPoint"
+                                                style="text-align: center;" role="alert">
+                                                {{register_message}}</div>
+                                        </div>
+                                        <div *ngSwitchCase="'400'">
+                                            <div class="alert alert-danger" *ngIf="registerPoint"
+                                                style="text-align: center;" role="alert">
+                                                {{register_message}}</div>
+                                        </div>
+                                        <div *ngSwitchDefault>
+
+                                        </div>
+                                    </div>
+                                    <div class="d-flex flex-row align-items-center mb-2">
+                                        <div class="form-outline flex-fill mb-0">
+                                            <label htmlFor="photo" class="form-label">Profile Picture</label>
+                                            <input class="form-control" type="file" id="photo" formControlName="photo"
+                                                (change)="uploadFile($event)" />
+                                            <span class="text-danger"
+                                                *ngIf="photo && photo.invalid && photo.touched">Field is
+                                                not valid</span>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex flex-row align-items-center mb-2">
+                                        <div class="form-outline flex-fill mb-0">
+                                            <label class="form-label" htmlFor="name">Your Name</label>
+                                            <input type="text" id="name" class="form-control" formControlName="name" />
+                                            <span class="text-danger" *ngIf="name && name.invalid && name.touched">Field
+                                                is
+                                                not valid</span>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex flex-row align-items-center mb-2">
+                                        <div class="form-outline flex-fill mb-0">
+                                            <label class="form-label" htmlFor="email">Your Email</label>
+                                            <input type="email" id="email" class="form-control"
+                                                formControlName="email" />
+                                            <span class="text-danger"
+                                                *ngIf="email && email.invalid && email.touched">Field is
+                                                not valid</span>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex flex-row align-items-center mb-2">
+                                        <div class="form-outline flex-fill mb-0">
+                                            <label class="form-label" htmlFor="phone">Phone No</label>
+                                            <input type="text" id="phone" class="form-control"
+                                                formControlName="phone" />
+                                            <span class="text-danger"
+                                                *ngIf="phone && phone.invalid && phone.touched">Field is
+                                                not valid</span>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex flex-row align-items-center mb-2">
+                                        <div class="form-outline flex-fill mb-0">
+                                            <label class="form-label" htmlFor="password">Password
+                                                <small class="text-muted">Minimum 5 digit. Maximum 8
+                                                    digit</small></label>
+                                            <input type="password" id="password" class="form-control"
+                                                formControlName="password" />
+                                            <span class="text-danger"
+                                                *ngIf="password && password.invalid && password.touched">Field is
+                                                not valid</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-check d-flex justify-content-center mb-3">
+                                        <input class="form-check-input me-2" type="checkbox" defaultValue
+                                            id="form2Example3c" style="position: inherit" />
+                                        <label class="form-check-label" htmlFor="form2Example3">
+                                            I agree all statements in <a href="#!">Terms of service</a>
+                                        </label>
+                                    </div>
+                                    <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                                        <button style="
+                                    width: 100%;" type="submit" class="btn btn-primary"
+                                            [disabled]="registerForm.invalid">
+                                            Sign Up
+                                        </button>
+                                    </div>
+                                </form>
+
+
+                            </div>
+                            <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
+                                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp"
+                                    class="img-fluid" alt="Sample image" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

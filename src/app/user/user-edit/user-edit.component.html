@@ -1,0 +1,75 @@
+<div class="container">
+    <section class="mt-5 mb-5">
+        <div class="col-md-6" style="margin: auto;">
+            <form class="mx-1 mx-md-4" id="myform" [formGroup]="updateForm" (ngSubmit)="UpdateForm()">
+                <div [ngSwitch]="apistatusCode">
+                    <div *ngSwitchCase="'200'">
+                        <div class="alert alert-success" *ngIf="updatePoint" style="text-align: center;" role="alert">
+                            {{update_message}}</div>
+                    </div>
+                    <div *ngSwitchCase="'400'">
+                        <div class="alert alert-danger" *ngIf="updatePoint" style="text-align: center;" role="alert">
+                            {{update_message}}</div>
+                    </div>
+                    <div *ngSwitchDefault>
+
+                    </div>
+                </div>
+                <div class="d-flex flex-row align-items-center mb-2">
+                    <div class="form-outline flex-fill mb-0">
+                        <div className="d-flex align-items-center order-1 order-lg-2">
+                            <img src="http://localhost:5000/users-file/{{ useroldphoto }}"
+                                style="width:90px; float: right; margin-bottom: 5px;height: 50px;" alt="Sample image" />
+                        </div>
+                        <label htmlFor="photo" class="form-label">Profile Picture</label>
+                        <input class="form-control" type="file" id="photo" formControlName="photo"
+                            (change)="uploadFile($event)" />
+                        <span class="text-danger" *ngIf="photo && photo.invalid && photo.touched">Field is
+                            not valid</span>
+                    </div>
+                </div>
+                <div class="d-flex flex-row align-items-center mb-2">
+                    <div class="form-outline flex-fill mb-0">
+                        <label class="form-label" htmlFor="name">Your Name</label>
+                        <input type="text" id="name" class="form-control" formControlName="name" />
+                        <span class="text-danger" *ngIf="name && name.invalid && name.touched">Field
+                            is
+                            not valid</span>
+                    </div>
+                </div>
+                <div class="d-flex flex-row align-items-center mb-2">
+                    <div class="form-outline flex-fill mb-0">
+                        <label class="form-label" htmlFor="email">Your Email</label>
+                        <input type="email" id="email" class="form-control" formControlName="email" />
+                        <span class="text-danger" *ngIf="email && email.invalid && email.touched">Field is
+                            not valid</span>
+                    </div>
+                </div>
+                <div class="d-flex flex-row align-items-center mb-2">
+                    <div class="form-outline flex-fill mb-0">
+                        <label class="form-label" htmlFor="phone">Phone No</label>
+                        <input type="number" id="phone" class="form-control" formControlName="phone" />
+                        <span class="text-danger" *ngIf="phone && phone.invalid && phone.touched">Field is
+                            not valid</span>
+                    </div>
+                </div>
+                <div class="d-flex flex-row align-items-center mb-2">
+                    <div class="form-outline flex-fill mb-0">
+                        <label class="form-label" htmlFor="password">Password
+                            <small class="text-muted">Minimum 5 digit. Maximum 8
+                                digit</small></label>
+                        <input type="password" id="password" class="form-control" formControlName="password" />
+                        <span class="text-danger" *ngIf="password && password.invalid && password.touched">Field is
+                            not valid</span>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                    <button style="width: 100%;" type="submit" class="btn btn-primary" [disabled]="updateForm.invalid">
+                        Update
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+</div>
