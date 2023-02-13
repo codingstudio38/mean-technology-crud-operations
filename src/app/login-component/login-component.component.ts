@@ -5,7 +5,7 @@ import { ApiConnectionService } from './../services/api-connection.service';
 import { HttpEvent, HttpEventType } from '@angular/common/http';
 import { Router } from '@angular/router'; 
  declare var $: any;  
-@Component({
+@Component({ 
   selector: 'app-login-component',
   templateUrl: './login-component.component.html',
   styleUrls: ['./login-component.component.css']
@@ -39,7 +39,7 @@ $(document).ready(() => {
   get password() {
     return this.loginForm.get('password');
   }
-  
+   
 loginPoint: boolean = false;
 apistatusCode: any;
 login_message: any;
