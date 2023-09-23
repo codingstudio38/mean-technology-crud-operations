@@ -9,7 +9,7 @@ declare var $: any;
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
-})
+})  
 export class DashboardComponent implements OnInit {
 
   constructor(private APIservice: ApiConnectionService, private router: Router, private cookieService: CookieService) {

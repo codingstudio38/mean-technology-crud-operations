@@ -4,19 +4,21 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { HomeComponent } from './home/home.component';
 import { UsersPostComponent } from './users-post/users-post.component';
 import { UserEditComponent } from './user-edit/user-edit.component';
+import { GoogleTranslateComponent } from './google-translate/google-translate.component';
 const routes: Routes = [
   { 
     path: '',
-    component: HomeComponent, children: [
+    component: HomeComponent, children: [ 
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: 'home', component: DashboardComponent },
       { path: 'edit/:id', component: UserEditComponent },
       { path: 'users-post', component: UsersPostComponent },
+      { path: 'google-translate', component: GoogleTranslateComponent },
       {path: '**', redirectTo: 'home', pathMatch: 'full' }
     ]
   } 
 ];
-
+ 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]

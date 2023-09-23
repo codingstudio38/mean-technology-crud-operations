@@ -11,13 +11,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { UserheaderComponent } from './userheader/userheader.component';
 import { UsersPostComponent } from './users-post/users-post.component';
 import { UserEditComponent } from './user-edit/user-edit.component';
+import { GoogleTranslateComponent } from './google-translate/google-translate.component';
 @NgModule({
   declarations: [
     DashboardComponent,
     HomeComponent,
     UserheaderComponent,
     UsersPostComponent,
-    UserEditComponent
+    UserEditComponent,
+    GoogleTranslateComponent
   ],
   imports: [
     CommonModule,

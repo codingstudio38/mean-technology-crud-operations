@@ -4,7 +4,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ApiConnectionService } from './../services/api-connection.service';
 import { HttpEvent, HttpEventType } from '@angular/common/http';
 import { Router } from '@angular/router'; 
- declare var $: any;  
+declare var $: any;  
 @Component({ 
   selector: 'app-login-component',
   templateUrl: './login-component.component.html',

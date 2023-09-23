@@ -1,0 +1,51 @@
+<div class="container">
+    <section class="mt-5 mb-5">
+        <div class="col md-12">
+            <h2 style="text-align: center; text-decoration: underline">
+                Google Translate
+            </h2>
+            <form class="mx-1 mx-md-4" id="googleForm" [formGroup]="googleForm" (ngSubmit)="Test()">
+                <div class="row">
+                    <div class="col-md-5">
+                        <div class="d-flex flex-row align-items-center mb-2">
+                            <div class="form-outline flex-fill mb-0">
+                                <label class="form-label" htmlFor="googletextbox">Text</label>
+                                <input type="text" id="googletextbox" #googletextbox class="form-control"
+                                    formControlName="googletext" />
+                                <span class="text-danger"
+                                    *ngIf="googletext && googletext.invalid && googletext.touched">Field
+                                    is
+                                    not valid</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-outline flex-fill mb-0">
+                            <label class="form-label" htmlFor="googletextbox">Language</label>
+                            <select class="custom-select" id="language" #language formControlName="googlelanguage"
+                                (change)="GetResulte(language.value,googletextbox.value)">
+                                <option [selected]="true" value="">--Select--</option>
+                                <option value="en">English</option>
+                                <option value="bn">Bengali</option>
+                                <option value="hi">Hindi</option>
+                                <option value="es">Spanish</option>
+                                <option value="fr">French</option>
+                                <option value="ja">Japanese</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="d-flex flex-row align-items-center mb-2">
+                            <div class="form-outline flex-fill mb-0">
+                                <label class="form-label" htmlFor="google_resulte">Resulte</label>
+                                <input type="text" id="google_resulte" #google_resulte class="form-control"
+                                    formControlName="google_resulte" />
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+</div>

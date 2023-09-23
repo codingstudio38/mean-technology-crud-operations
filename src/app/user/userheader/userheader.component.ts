@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   templateUrl: './userheader.component.html',
   styleUrls: ['./userheader.component.css']
 })
-export class UserheaderComponent implements OnInit {
+export class UserheaderComponent implements OnInit { 
 
   constructor(private APIservice: ApiConnectionService, private router: Router,private cookieService: CookieService) {
 

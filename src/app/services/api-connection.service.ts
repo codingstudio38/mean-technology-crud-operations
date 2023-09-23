@@ -3,12 +3,12 @@ import { HttpErrorResponse, HttpClient, HttpHeaders } from '@angular/common/http
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { CookieService } from 'ngx-cookie-service';
-
+import { environment } from '../../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
 export class ApiConnectionService {
-  API_URL:string = 'http://localhost:5000';
+  // API_URL:string = environment.API_URL;
   LOGIN_USER:any = this.loginuserDetails();
   constructor(private http: HttpClient, private cookieService: CookieService) {
 
@@ -40,7 +40,7 @@ loginuserDetails(){
 
 
   ForLogin(data:any) {
-    return this.http.post(`${this.API_URL}/login`,data, {
+    return this.http.post(`${environment.API_URL}/login`,data, {
       reportProgress: true,
       observe: 'events',
     }).pipe(
@@ -49,7 +49,7 @@ loginuserDetails(){
   }
 
   ForRegister(data:any) {
-    return this.http.post(`${this.API_URL}/create`,data, {
+    return this.http.post(`${environment.API_URL}/create`,data, {
       reportProgress: true,
       observe: 'events',
     }).pipe(
@@ -58,7 +58,7 @@ loginuserDetails(){
   }
 
   ForLogout() {
-    return this.http.get(`${this.API_URL}/logout`, {
+    return this.http.get(`${environment.API_URL}/logout`, {
       reportProgress: true,
       observe: 'events',
       headers: new HttpHeaders().set('authorization', this.loginuserDetails().token)
@@ -69,7 +69,7 @@ loginuserDetails(){
 
     ForGetUserList(p:number,l:number) {
 
-    return this.http.get(`${this.API_URL}/users-list?page=${p}&size=${l}`, {
+    return this.http.get(`${environment.API_URL}/users-list?page=${p}&size=${l}`, {
       reportProgress: true,
       observe: 'events',
       headers: new HttpHeaders().set('authorization', this.loginuserDetails().token)
@@ -79,7 +79,7 @@ loginuserDetails(){
   }
 
   ForDeleteUser(id:any){
-    return this.http.delete(`${this.API_URL}/user?id=${id}`, {
+    return this.http.delete(`${environment.API_URL}/user?id=${id}`, {
       reportProgress: true,
       observe: 'events',
       headers: new HttpHeaders().set('authorization', this.loginuserDetails().token)
@@ -89,7 +89,7 @@ loginuserDetails(){
   }
 
   ForUserDetails(id:any){
-    return this.http.get(`${this.API_URL}/user?id=${id}`, {
+    return this.http.get(`${environment.API_URL}/user?id=${id}`, {
       reportProgress: true,
       observe: 'events',
       headers: new HttpHeaders().set('authorization', this.loginuserDetails().token)
@@ -98,7 +98,7 @@ loginuserDetails(){
     );
   }
   ForUpdateForm(data:any) {
-    return this.http.put(`${this.API_URL}/update`,data, {
+    return this.http.put(`${environment.API_URL}/update`,data, {
       reportProgress: true,
       observe: 'events',
       headers: new HttpHeaders().set('authorization', this.loginuserDetails().token)
@@ -108,7 +108,7 @@ loginuserDetails(){
   }
 
   ForUsersPost(p:number, l:number){
-    return this.http.get(`${this.API_URL}/users/post-list?page=${p}&size=${l}`, {
+    return this.http.get(`${environment.API_URL}/users/post-list?page=${p}&size=${l}`, {
       reportProgress: true,
       observe: 'events',
       headers: new HttpHeaders().set('authorization', this.loginuserDetails().token)
@@ -118,6 +118,13 @@ loginuserDetails(){
   }
 
 
+
+  
+  getGoogleResponse(data:any){
+    return this.http.post(`${environment.googleTr_url}?key=${environment.googleApi_key}`,data).pipe(
+      catchError(this.errorMgmt)
+    );
+  }
 
 
  
