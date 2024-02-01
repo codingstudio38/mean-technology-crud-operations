@@ -1,0 +1,42 @@
+<div class="container">
+    <section class="mt-5 mb-5">
+        <div class="col md-12">
+            <h2 style="text-align: center; text-decoration: underline">
+                Add New
+            </h2>
+            <form [formGroup]="myForm" (ngSubmit)="AddNew()">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Name</label>
+                    <input type="email" class="form-control" placeholder="Enter name" formControlName="name">
+                    <small class="form-text text-danger"
+                        *ngIf="myForm.controls['name'].touched && myForm.hasError('invalid','name')">
+                        {{ myForm.getError('message','name') }}</small>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Email</label>
+                    <input type="email" class="form-control" placeholder="Enter email" formControlName="email">
+                    <small class="form-text text-danger"
+                        *ngIf="myForm.controls['email'].touched && myForm.hasError('invalid','email')">
+                        {{ myForm.getError('message','email') }}</small>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Phone Number</label>
+                    <input type="email" class="form-control" placeholder="Enter phone" formControlName="phone">
+                    <small class="form-text text-danger"
+                        *ngIf="myForm.controls['phone'].touched && myForm.hasError('invalid','phone')">
+                        {{ myForm.getError('message','phone') }}</small>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Password</label>
+                    <input type="password" class="form-control" placeholder="Password" formControlName="password">
+                    <small class="form-text text-danger"
+                        *ngIf="myForm.controls['password'].touched && myForm.hasError('invalid','password')">
+                        {{ myForm.getError('message','password') }}</small>
+                </div>
+
+                <button type="submit" class="btn btn-primary" [disabled]="myForm.invalid">Submit</button>
+
+            </form>
+        </div>
+    </section>
+</div>

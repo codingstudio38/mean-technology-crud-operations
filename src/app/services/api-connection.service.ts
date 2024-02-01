@@ -117,8 +117,15 @@ loginuserDetails(){
     );
   }
 
-
-
+  ExportExcelFile(urlIs:any){
+      return this.http.get(`${environment.API_URL}${urlIs}`, {
+      responseType: 'blob',
+       headers: new HttpHeaders().set('authorization', this.loginuserDetails().token)
+    }).pipe(
+      catchError(this.errorMgmt)
+    );
+  }
+ 
   
   getGoogleResponse(data:any){
     return this.http.post(`${environment.googleTr_url}?key=${environment.googleApi_key}`,data).pipe(

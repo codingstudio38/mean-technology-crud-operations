@@ -6,6 +6,17 @@
                 <thead>
                     <tr>
                         <th colspan="3" align="left">
+                            <button [disabled]="xlbtn" (click)="DownloadPDF()" type="button"
+                                class="btn btn-success btn-sm">Downlaod
+                                Excel</button>
+                        </th>
+                        <th colspan="3" align="right">
+                            <button [disabled]="pdfbtn" type="button" class="btn btn-success btn-sm">Downlaod
+                                PDF</button>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th colspan="3" align="left">
                             <select (change)="setLimit(limit_.value)" #limit_>
                                 <option value="5">Limit</option>
                                 <option value="{{ item }}" *ngFor="let item of limit_list;">{{ item }}</option>

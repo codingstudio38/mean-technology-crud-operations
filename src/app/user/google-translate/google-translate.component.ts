@@ -79,7 +79,7 @@ GetResulte(language:any,text:any):any{
           this.apistatusCode = this.apibody.status;
           console.clear();
           console.log(this.apibody);
-    });
+    }); 
 }
 
 }

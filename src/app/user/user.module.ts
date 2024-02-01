@@ -12,6 +12,8 @@ import { UserheaderComponent } from './userheader/userheader.component';
 import { UsersPostComponent } from './users-post/users-post.component';
 import { UserEditComponent } from './user-edit/user-edit.component';
 import { GoogleTranslateComponent } from './google-translate/google-translate.component';
+import { AddDataComponent } from './add-data/add-data.component';
+import { EditDataComponent } from './edit-data/edit-data.component';
 @NgModule({
   declarations: [
     DashboardComponent,
@@ -19,7 +21,9 @@ import { GoogleTranslateComponent } from './google-translate/google-translate.co
     UserheaderComponent,
     UsersPostComponent,
     UserEditComponent,
-    GoogleTranslateComponent
+    GoogleTranslateComponent,
+    AddDataComponent,
+    EditDataComponent
   ],
   imports: [
     CommonModule,
