@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ViewChild  } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ApiConnectionService } from './../../services/api-connection.service';
@@ -6,12 +6,14 @@ import { HttpEvent, HttpEventType } from '@angular/common/http';
 import { Router } from '@angular/router';
 declare var $: any;
 import * as fileSaver from 'file-saver';
+import { ChildFnConComponent } from './../child-fn-con/child-fn-con.component';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
+  @ViewChild('childfncon') childComponent: ChildFnConComponent | undefined;
   constructor(
     private APIservice: ApiConnectionService,
     private router: Router,
@@ -30,6 +32,11 @@ export class DashboardComponent implements OnInit {
   }
 
   USER_DETAILS: any = this.APIservice.loginuserDetails();
+
+
+   callChildFunction() {
+    this.childComponent?.childFn();
+  }
 
   tokenVerify(alertis: boolean) {
     if (this.APIservice.checkuserIsloggedin()) {
@@ -188,4 +195,12 @@ export class DashboardComponent implements OnInit {
       }
     );
   }
+
+
+CallChild(e:any):any{
+  console.log(e)
+}
+
+
+
 }

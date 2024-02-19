@@ -2,6 +2,8 @@
     <section class="mt-5 mb-5">
         <div class="col md-12">
             <h2 style="text-align: center; text-decoration: underline;"> Users List</h2>
+            <app-child-fn-con #childfncon (parentFnEvent)="CallChild($event)" [allparams]='{data:1}'></app-child-fn-con>
+            <button class="btn btn-success btn-sm" type="button" (click)="callChildFunction()">Call Child Fn</button>
             <table class="table table-striped">
                 <thead>
                     <tr>

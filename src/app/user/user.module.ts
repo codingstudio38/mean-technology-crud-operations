@@ -14,6 +14,7 @@ import { UserEditComponent } from './user-edit/user-edit.component';
 import { GoogleTranslateComponent } from './google-translate/google-translate.component';
 import { AddDataComponent } from './add-data/add-data.component';
 import { EditDataComponent } from './edit-data/edit-data.component';
+import { ChildFnConComponent } from './child-fn-con/child-fn-con.component';
 @NgModule({
   declarations: [
     DashboardComponent,
@@ -23,7 +24,8 @@ import { EditDataComponent } from './edit-data/edit-data.component';
     UserEditComponent,
     GoogleTranslateComponent,
     AddDataComponent,
-    EditDataComponent
+    EditDataComponent,
+    ChildFnConComponent
   ],
   imports: [
     CommonModule,
