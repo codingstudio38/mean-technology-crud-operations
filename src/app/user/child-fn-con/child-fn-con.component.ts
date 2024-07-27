@@ -17,7 +17,7 @@ export class ChildFnConComponent implements OnInit {
 
 
   callParent(){
-    this.parentFnEvent.emit('Hello from child..')
+    this.parentFnEvent.emit('calling parent fn')
   }
 
   childFn(){

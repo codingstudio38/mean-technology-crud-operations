@@ -61,7 +61,7 @@ loginuserDetails(){
     return this.http.get(`${environment.API_URL}/logout`, {
       reportProgress: true,
       observe: 'events',
-      headers: new HttpHeaders().set('authorization', this.loginuserDetails().token)
+      headers: new HttpHeaders().set('authorization', `Bearer ${this.loginuserDetails().token}`)
     }).pipe(
       catchError(this.errorMgmt)
     );
@@ -72,7 +72,7 @@ loginuserDetails(){
     return this.http.get(`${environment.API_URL}/users-list?page=${p}&size=${l}`, {
       reportProgress: true,
       observe: 'events',
-      headers: new HttpHeaders().set('authorization', this.loginuserDetails().token)
+      headers: new HttpHeaders().set('authorization', `Bearer ${this.loginuserDetails().token}`)
     }).pipe(
       catchError(this.errorMgmt)
     );
@@ -82,7 +82,7 @@ loginuserDetails(){
     return this.http.delete(`${environment.API_URL}/user?id=${id}`, {
       reportProgress: true,
       observe: 'events',
-      headers: new HttpHeaders().set('authorization', this.loginuserDetails().token)
+      headers: new HttpHeaders().set('authorization', `Bearer ${this.loginuserDetails().token}`)
     }).pipe(
       catchError(this.errorMgmt)
     );
@@ -92,7 +92,7 @@ loginuserDetails(){
     return this.http.get(`${environment.API_URL}/user?id=${id}`, {
       reportProgress: true,
       observe: 'events',
-      headers: new HttpHeaders().set('authorization', this.loginuserDetails().token)
+      headers: new HttpHeaders().set('authorization', `Bearer ${this.loginuserDetails().token}`)
     }).pipe(
       catchError(this.errorMgmt)
     );
@@ -101,17 +101,17 @@ loginuserDetails(){
     return this.http.put(`${environment.API_URL}/update`,data, {
       reportProgress: true,
       observe: 'events',
-      headers: new HttpHeaders().set('authorization', this.loginuserDetails().token)
+      headers: new HttpHeaders().set('authorization', `Bearer ${this.loginuserDetails().token}`)
     }).pipe(
       catchError(this.errorMgmt)
     );
   }
 
-  ForUsersPost(p:number, l:number){
-    return this.http.get(`${environment.API_URL}/users/post-list?page=${p}&size=${l}`, {
+  ForUsersPost(p:number, l:number,userid:any){
+    return this.http.get(`${environment.API_URL}/users/post-list?page=${p}&size=${l}&userid=${userid}`, {
       reportProgress: true,
       observe: 'events',
-      headers: new HttpHeaders().set('authorization', this.loginuserDetails().token)
+      headers: new HttpHeaders().set('authorization', `Bearer ${this.loginuserDetails().token}`)
     }).pipe(
       catchError(this.errorMgmt)
     );
@@ -120,7 +120,7 @@ loginuserDetails(){
   ExportExcelFile(urlIs:any){
       return this.http.get(`${environment.API_URL}${urlIs}`, {
       responseType: 'blob',
-       headers: new HttpHeaders().set('authorization', this.loginuserDetails().token)
+       headers: new HttpHeaders().set('authorization', `Bearer ${this.loginuserDetails().token}`)
     }).pipe(
       catchError(this.errorMgmt)
     );

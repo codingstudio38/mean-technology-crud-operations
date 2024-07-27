@@ -24,8 +24,6 @@ export class UsersPostComponent implements OnInit {
     $(document).ready(() => {
       document.title = "MEAN Technology || Users - Post";
     });
-
-
   }
 
   USER_DETAILS: any = this.APIservice.loginuserDetails();
@@ -62,7 +60,7 @@ export class UsersPostComponent implements OnInit {
   checkNo: any;
   UsersPost(p: number, l: number) {
     this.tokenVerify(true);
-    this.APIservice.ForUsersPost(p, l).subscribe((response: HttpEvent<any>) => {
+    this.APIservice.ForUsersPost(p, l,this.USER_DETAILS._id).subscribe((response: HttpEvent<any>) => {
       switch (response.type) {
         case HttpEventType.Sent:
           //console.log('Sent' + HttpEventType.Sent);
