@@ -40,11 +40,10 @@ export class DashboardComponent implements OnInit {
       // console.log("scrollHeight " + document.documentElement.scrollHeight);
       // console.log("innerHeight " + window.innerHeight);
       // console.log("scrollTop " + document.documentElement.scrollTop);
-      
         if ((window.innerHeight + document.documentElement.scrollTop + 1) > document.documentElement.scrollHeight) {
-          console.log("current_scroll_position " +this.current_scroll_position);
-          console.log("pre_scroll_position " +this.pre_scroll_position);
-            if(this.last_page >= this.page1){
+          // console.log("current_scroll_position " +this.current_scroll_position);
+          // console.log("pre_scroll_position " +this.pre_scroll_position);
+            if(this.last_page > this.page1){
               if(this.dataload1==false){
                 if(this.current_scroll_position > this.pre_scroll_position){// going to bottom
                   this.page1=this.page1+1;
