@@ -38,7 +38,7 @@
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody *ngIf="dataload==false">
                     <tr
                         *ngFor="let item of records| paginate: { itemsPerPage: limit, currentPage: page, totalItems: totalRecords }; let i=index;">
                         <th scope="row">{{ item.slno }}</th>
@@ -56,6 +56,11 @@
                         </td>
                     </tr>
                 </tbody>
+                <tbody *ngIf="dataload==true">
+                    <tr>
+                        <th scope="row" colspan="6">lata loading. pleae wait..</th>
+                    </tr>
+                </tbody>
                 <tfoot>
                     <tr>
                         <td colspan="6" align="right">
@@ -66,4 +71,25 @@
             </table>
         </div>
     </section>
+</div>
+
+<div class="row">
+    <div class="col-md-4 mt-2" *ngFor="let item of records_new; let i=index;">
+        <div class="card">
+            <img style="height: 270px;" src="http://localhost:5000/users-file/{{ item.photo }}" class="card-img-top"
+                alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{item.name}}</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card’s
+                    content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+    </div>
+    <div style="text-align: center; margin-top: 20px;">
+        <div class="spinner-border text-primary" role="status" *ngIf="dataload1==true">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
 </div>

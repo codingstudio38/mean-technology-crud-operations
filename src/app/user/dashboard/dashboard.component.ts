@@ -19,17 +19,56 @@ export class DashboardComponent implements OnInit {
     private router: Router,
     private cookieService: CookieService
   ) {}
-
   ngOnInit(): void {
+    window.addEventListener("scroll", this.handelInfiniteScroll);
     this.tokenVerify(false);
     if (this.APIservice.checkuserIsloggedin()) {
       this.GetUserList(this.page, this.limit);
+      this.newGetUserList(this.page1, this.limit1);
     }
     $(document).ready(() => {
       document.title = 'MEAN Technology || Users - List';
       // document.body.style.backgroundColor = "white";
     });
   }
+  current_scroll_position:any=0;
+  pre_scroll_position:any=0;
+  public handelInfiniteScroll = async () => {
+    this.current_scroll_position = document.documentElement.scrollTop;
+    console.clear();
+    try {
+      // console.log("scrollHeight " + document.documentElement.scrollHeight);
+      // console.log("innerHeight " + window.innerHeight);
+      // console.log("scrollTop " + document.documentElement.scrollTop);
+      
+        if ((window.innerHeight + document.documentElement.scrollTop + 1) > document.documentElement.scrollHeight) {
+          console.log("current_scroll_position " +this.current_scroll_position);
+          console.log("pre_scroll_position " +this.pre_scroll_position);
+            if(this.last_page >= this.page1){
+              if(this.dataload1==false){
+                if(this.current_scroll_position > this.pre_scroll_position){// going to bottom
+                  this.page1=this.page1+1;
+                  this.pre_scroll_position=document.documentElement.scrollTop;
+                  console.log(`window scroll down..`);
+                  this.dataload1=true;
+                 setTimeout(()=>{
+                  this.newGetUserList(this.page1, this.limit1);
+                 },1000)
+                } else {
+                  console.log(`window scroll top..`);
+                }
+              } else {
+                console.log('data loading..');
+              }
+            } else {
+              console.log(`data end`);
+            }
+          
+        }
+    } catch (error:any) {
+        console.log(error.message);
+    }
+};
 
   USER_DETAILS: any = this.APIservice.loginuserDetails();
 
@@ -68,10 +107,13 @@ export class DashboardComponent implements OnInit {
   totalRecords: any;
   pagingCounter: any;
   checkNo: any;
+  dataload:boolean=false;
   GetUserList(p: number, l: number) {
     this.tokenVerify(true);
+    this.dataload=true;
     this.APIservice.ForGetUserList(p, l).subscribe(
       (response: HttpEvent<any>) => {
+        this.dataload=false;
         switch (response.type) {
           case HttpEventType.Sent:
             //console.log('Sent' + HttpEventType.Sent);
@@ -118,6 +160,55 @@ export class DashboardComponent implements OnInit {
               } else {
                 this.limit_list = [5, 10, 25, 50, 100];
               }
+            } else {
+              alert(this.apibody.message);
+            }
+        }
+      }
+    );
+  }
+
+  page1:any=1;
+  limit1=5;
+  dataload1:boolean=false;
+  records_new:any[]=[];
+  last_page=0;
+  newGetUserList(p: number, l: number) {
+    this.tokenVerify(true);
+    this.dataload1=true;
+    this.APIservice.ForGetUserList(p, l).subscribe(
+      (response: HttpEvent<any>) => {
+        this.dataload1=false;
+        switch (response.type) {
+          case HttpEventType.Sent:
+            //console.log('Sent' + HttpEventType.Sent);
+            break;
+          case HttpEventType.ResponseHeader:
+            //console.log('ResponseHeader' + HttpEventType.ResponseHeader);
+            break;
+          case HttpEventType.UploadProgress:
+            break;
+          case HttpEventType.Response:
+            this.apibody = response.body;
+            if (this.apibody.status == 200) {
+              const data = this.apibody.list.docs;
+              this.last_page = this.apibody.list.totalPages;
+              console.log(this.last_page);
+              data.forEach((item: any, key: any) => {
+                this.records_new.push({
+                  _id: item._id,
+                  name: item.name,
+                  phone: item.phone,
+                  email: item.email,
+                  photo: item.photo,
+                  slno: this.pagingCounter++,
+                  tokens: item.tokens,
+                  updated_at: item.updated_at,
+                  created_at: item.created_at,
+                  __v: item.__v,
+                });
+              });
+           
             } else {
               alert(this.apibody.message);
             }
